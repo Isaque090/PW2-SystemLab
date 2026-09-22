@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 19-Set-2026 às 01:26
+-- Data de Criação: 22-Set-2026 às 00:57
 -- Versão do servidor: 5.6.13
 -- versão do PHP: 5.4.17
 
@@ -35,6 +35,13 @@ CREATE TABLE IF NOT EXISTS `lab` (
   UNIQUE KEY `numero_lab` (`numero_lab`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Extraindo dados da tabela `lab`
+--
+
+INSERT INTO `lab` (`id`, `numero_lab`) VALUES
+(0, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -56,6 +63,19 @@ CREATE TABLE IF NOT EXISTS `professores` (
 
 INSERT INTO `professores` (`id`, `nm_professor`, `ds_email`, `rm`) VALUES
 (1, 'aaaaaa', 'a@gmail.com', 11111);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `reservas`
+--
+
+CREATE TABLE IF NOT EXISTS `reservas` (
+  `id` int(11) NOT NULL,
+  `cd_professor` int(11) NOT NULL,
+  `cd_lab` int(11) NOT NULL,
+  KEY `cd_professor` (`cd_professor`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
