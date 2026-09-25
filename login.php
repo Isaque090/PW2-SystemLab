@@ -22,8 +22,7 @@ if (isset($_POST['enviar'])) {
 
 
 $tema = $_COOKIE['tema'] ?? "claro";
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
+ 
     if (isset($_POST['tema'])) {
 
         if ($tema == "claro") {
@@ -35,12 +34,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         setcookie("tema", $tema, time() + 36000, "/");
+        
+    header("Location: login.php");
+    exit;
     }
 
 
-    header("Location: login.php");
-    exit;
-}
+
 if ($tema == "claro") {
     $arquivo = "css/claro/login.css";
 } else {

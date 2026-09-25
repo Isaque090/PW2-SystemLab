@@ -1,6 +1,7 @@
 <?php
 
 include_once('inc/config.php');
+include_once('inc/trocar_tema.php');
 session_start();
 if (!isset($_SESSION['login'])) {
     header('location:login.php');
@@ -72,31 +73,6 @@ if (isset($_POST['excluir'])) {
     header('location:professores.php');
     exit;
 }
-$tema = $_COOKIE['tema'] ?? "claro";
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-    if (isset($_POST['tema'])) {
-
-        if ($tema == "claro") {
-
-            $tema = "escuro";
-        } else {
-            $tema = "claro";
-
-        }
-
-        setcookie("tema", $tema, time() + 36000, "/");
-    }
-
-
-    header("Location: professores.php");
-    exit;
-}
-if ($tema == "claro") {
-    $arquivo = "css/claro/tema_claro.css";
-} else {
-    $arquivo = "css/escuro/tema_escuro.css";
-}
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -119,7 +95,7 @@ if ($tema == "claro") {
         <div class="logo">Reserva</div>
         <form method="post" class="botao-tema">
 
-            <button class="btn btn-tema" type="submit" name="tema" id="themeButton">
+            <button class="btn btn-tema" value="professores" type="submit" name="tema" id="themeButton">
                 <?php if ($tema == "claro"): ?>
                     <i class="bi bi-moon"></i>
                 <?php else: ?>
